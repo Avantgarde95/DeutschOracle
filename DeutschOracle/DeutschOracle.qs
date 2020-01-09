@@ -3,11 +3,11 @@
     open Microsoft.Quantum.Canon;
 
     operation Clear(a: Qubit, b: Qubit): Unit {
-		body {
+        body {
             Reset(a);
             Reset(b);
         }
-	}
+    }
 
     operation IsBlackBoxConstant(blackBox: ((Qubit, Qubit) => Unit)) : (Bool) {
         body {
@@ -16,7 +16,7 @@
 
             // Allocate two qbits.
             using (qbits = Qubit[2]) {
-				let input = qbits[0];
+                let input = qbits[0];
                 let output = qbits[1];
 
                 // Label qbits as inputs and outputs.
@@ -41,34 +41,34 @@
 
                 // Clear qbits before release.
                 Clear(input, output);
-			}
+            }
 
             return One == inputResult;
-		}
-	}
+        }
+    }
 
     operation IsConstantZeroConstant(): (Bool) {
-		body {
+        body {
             return IsBlackBoxConstant(ConstantZero);
         }
-	}
+    }
 
     operation IsConstantOneConstant(): (Bool) {
-		body {
+        body {
             return IsBlackBoxConstant(ConstantOne);
         }
-	}
+    }
 
     operation IsIdentityConstant(): (Bool) {
-		body {
+        body {
             return IsBlackBoxConstant(Identity);
         }
-	}
+    }
 
     operation IsNegationConstant(): (Bool) {
-		body {
+        body {
             return IsBlackBoxConstant(Negation);
         }
-	}
+    }
 }
 
